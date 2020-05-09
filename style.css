@@ -1,0 +1,33 @@
+#header {
+  background: rgb(3, 255, 213);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100px;
+}
+.content {
+  background-image: url("2.jpg");
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  width: 100%;
+  height: 625px;
+}
+
+#footer {
+  background: rgb(3, 255, 213);
+  position: absolute;
+  top: 700px;
+  left: 0px;
+  width: 100%;
+  height: 25px;
+}
+
+#menu {
+  margin-left: 50px;
+}
+
+.center {
+  align-content: center;
+}
