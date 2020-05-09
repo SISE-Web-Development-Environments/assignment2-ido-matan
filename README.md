@@ -1,6 +1,7 @@
 # Assignment2
 מגישים: עידו קסטנבאום ומתן שושן
 תעודות זהות: 205767833_204196059
+
 https://sise-web-development-environments.github.io/assignment2-ido-matan/ :כתובת אתר
 
 .מדובר באפליקציית משחק של פאקמן
