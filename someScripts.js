@@ -128,6 +128,7 @@ function containsDigitAndLetter() {
 }
 
 function stop_game() {
+  $("#game").hide();
   if_end_game = true;
   audio.pause();
   clearInterval(interval);
