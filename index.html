@@ -2,20 +2,335 @@
 <html>
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
-	</head>
+		<!-- <script type="text/javascript" src="./main.js"></script> -->
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="screen.css" >
+		<link href ="buttonstyle.css" rel="stylesheet" type="text/css" >
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="./setting.js"></script>
+		<script type="text/javascript" src="./someScripts.js"></script>
 
+
+
+
+
+
+<style>
+	.input-group {
+    float: right;
+	}
+
+
+	.header img {
+  float: left;
+  width:120px;
+  height: 60px;
+  background: #555;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 500px;
+}
+
+</style>
+
+		
+
+	</head>
+	
 	<body>
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
+	<div id="header" class="header" >
+		<img src="logo4.png" alt="logo" />
+
+		<span style="font-size: 20px;"> PAC-MAN Matan Shushan - 204196059, Ido Kestenbaum - 205767833</span>
+		<br>
+		<br>
+		<br>
+		<a href="#" class="button" onclick="showWelcome()">Welcome</a>
+		<a href="#" class="button" onclick="showRegister()">Register</a>
+		<a href="#" class="button" onclick="showLogin()">Login</a>
+		<a href="#" class="button" onclick="showSetting()" >Settings</a>
+
+		
+	  </div>
+	<br>
+	
+
+			<div id="welcomeContent" class="content">
+				<h1 style="color:blue"> Welcome To Best Pack-Man Game Ever! </h1>
+				<img src="logo4.png"  alt="logo" />
+				<br>
+				<button id = "toLogIn"  onclick="showLogin()"> log in </button>
+				<button id = "toRegister"  onclick="showRegister()"> register </button>
+
+				
+				
+			</div>
+
+
+		<div id="registerContent" class="content" style="display: none;">
+		 
+		
+		<h1 style="color:blue">Register to the game</h1>
+		
+		<form id="signupForm">
+			
+			<br />
+			<label for="username">user name:</label>
+			<input type="text" id="username" name="username" /><br />
+	
+			<label for="password">password:</label>
+			<input type="password" id="password" name="password" /><br />
+			<label for="fullname">full name:</label>
+			<input
+			  onkeypress="return /[a-z ]/i.test(event.key)"
+			  type="text"
+			  id="fullname"
+			  name="fullname"
+			/><br />
+			<label for="email">email:</label>
+			<input type="text" id="email" name="email" /><br />
+	
+			<label for="birthday">Birthday:</label>
+			<input type="date" id="birthday" name="birthday" /><br />
+	
+			<input type="submit" value="submit">
+			
+			
+		  </form>	
+	
+
 		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
+
+
+
+		<div id="loginContent" class="content" style="display: none;" >
+		
+			<h1 style="color:blue">login to the game</h1>
+			
+			<form name="login">
+			
+            <label for="username">user name:</label>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="password">password:</label>
+			<input type="password" id="passwordInput" name="password"><br>
+
+			<input type="checkbox" onclick="showPassword()">Show Password<br>
+
+
+			
+<input type="button" onclick="isFound(this.form)" value="Login"/>
+
+		
+			</form>
+		
+          
+	
+	    </div>
+
+
+		
+		
+		<!-- <div id="time" class="content" style="display: none;">
+			<input id="lblTime" class="input-group" type="text" />
+			<label for="lblTime" class="input-group">TIME:</label>
 		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
+
+
+		<div id="score" class="content" style=" display: none;">
+			<input id="lblScore" class="input-group" type="text" />
+			<label for="lblScore" class="input-group">SCORE:</label>
 		</div>
+		<div id="life" class="content" style="display: none;">
+			<input id="lblLife" class="input-group" type="text" />
+			<label for="lblLife" class="input-group">life remain:</label>
+		</div> -->
+
+		<div id="game" class="content" style="display: none;">
+
+
+
+			
+			
+		
+
+
+		
+			<h1 style="color:blue" id =placeForUserInTheGame></h1> 
+
+			<input id="lblTime" readonly size="4" class="input-group" type="text" style="margin-right: 20px;"/>
+			<label for="lblTime"  class="input-group" >TIME:</label>
+			
+			<input id="lblScore" readonly class="input-group" size="4" type="text" />
+			<label for="lblScore" class="input-group" >SCORE:</label>
+		
+			<input id="lblLife"  class="input-group" size="4" type="text" readonly/>
+			<label for="lblLife" class="input-group">LIFE:</label>
+
+			<canvas id="canvas" class="canvas" height="600" width="600" style= "background-color: blue; display: none;"></canvas>
+			<button id = "rematch" onclick="rematch_game()"> rematch game </button>
+
+			<label for="lblNumOfBalls" >ball number:</label>
+			<input id="lblNumOfBalls" readonly  size="2" type="text" />
+
+
+			<label for="lblFirstColor" >1# color:</label>
+			<input id="lblFirstColor" readonly size="2" type="color" />
+
+			<label for="lblSecondColor" >2# color:</label>
+			<input id="lblSecondColor" readonly size="2" type="color" />
+
+			<label for="lblThirdColor" >3# color:</label>
+			<input id="lblThirdColor" readonly size="2" type="color" />
+
+			<label for="lblNumOfMonsters" >monster number:</label>
+			<input id="lblNumOfMonsters" readonly size="2" type="text" />
+
+			<label for="lblUP" >up:</label>
+			<input id="lblUP" readonly size="2" type="text" />
+
+			<label for="lblDOWN" >down:</label>
+			<input id="lblDOWN" readonly size="2" type="text" />
+
+			<label for="lblRIGHT" >right:</label>
+			<input id="lblRIGHT" readonly size="2" type="text" />
+
+			<label for="lblLEFT" >left:</label>
+			<input id="lblLEFT" readonly size="2" type="text" />
+		
+		</div>
+
+	
+
+	
+	<div id="footer">
+
+		<a href="#"  class="button" onclick="showAboutUs()">About us</a>
+		<a href="#" class="button" onclick="showContactUs()">contact us</a>
+
+	</div>  
+
+	<div id ="aboutUsContent" style="display: none;">
+
+		<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <p>our names: ido kestenbaum and matan shushan<br>
+			  we used in jquery validator and patterns of design.
+			  We learned a lot during the exercise, we experienced difficulties in writing the code and design it because this is the first time we have experienced such a task.<br>
+			  enjoy the game!</p>
+			</div>
+		  
+		  </div>
+		  	  
+
+	</div>
+
+	
+	<div id ="contactUsContent" class="content"  style="display: none;">
+		<h1>ido mail: idokest@post.bgu.ac.il </h1><br>
+		<h1>matan mail: matansh@post.bgu.ac.il </h1><br>
+		<h1>ido phone: 0507718668 </h1><br>
+		<h1>matan phone: 0501234423 </h1>
+	</div>
+
+
+	
+		
+	<div id="settingContent" class="setting content" style="display: none;">
+		<h1 style="color:blue" id =placeForUser></h1> 
+
+		<form  id="settingForm" >
+		
+		<legend style="color:blue"><b>Choose move keys for the game:</b></legend>
+		
+		<label for="upKey">MOVE UP</label>
+		<input id="upKey" name="upKey" class="move key">
+		<br>
+		
+		<label for="downKey">MOVE DOWN</label>
+		<input id="downKey" name="downKey" class="move key">
+		<br>
+		<label for="rightKey">MOVE RIGHT</label>
+		<input id="rightKey" name="rightKey" class="move key">
+		<br>
+		<label for="leftKey">MOVE LEFT</label>
+		<input id="leftKey" name="leftKey" class="move key">
+		<br>
+		<b> Define game properties: </b></legend> <br>
+		<label for="ballsNum">Number of balls (Between 50 to 90) </label>
+		<input id="ballsNum" name="ballsNum" type="number">
+		<br>
+		<label for="ballOneColor">color first ball - value 5 point</label>
+		<input id="ballOneColor" name="ballOneColor" type="color">
+		<br>
+		<label for="ballSecondColor">color second ball - value 15 point</label>
+		<input id="ballSecondColor" type="color" name="ballSecondColor">
+		<br>
+		<label for="ballThirdColor">color third ball - value 25 point!</label>
+		<input id="ballThirdColor" name="ballThirdColor" type="color">
+		<br>
+		<label for="timeGame">Time (min of 60 sec)</label>
+		<input id="timeGame" type="number" name="timeGame">
+		<br>
+		<label for="monsterNum">Number of Monsters (Between 1 to 4)</label>
+		<input id="monsterNum" type="number" name="monsterNum">
+		<br>
+		<button id = "random" type="button"> Random Values </button>
+		<br>
+		<input id="resume" class="submit" type="submit" value="Start the game!">
+		</form>
+	
+		</div>
+	
 	</body>
 </html>
